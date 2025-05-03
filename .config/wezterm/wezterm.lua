@@ -10,7 +10,7 @@ local config = wezterm.config_builder()
 -- window config
 -- config.font = wezterm.font("Hack Nerd Font")
 config.enable_wayland = false
-config.font_size = 11.0
+config.font_size = 10
 config.window_decorations = "RESIZE"
 config.window_background_opacity = 0.85
 config.enable_scroll_bar = true
