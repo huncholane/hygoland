@@ -65,5 +65,5 @@ end, { desc = "Telescope (cwd)" })
 
 -- Main file telescope cwd instead of git root
 vim.keymap.set("n", "<leader><space>", function()
-  require("telescope.builtin").find_files({ cwd = vim.fn.getcwd() })
+  require("telescope.builtin").find_files({ cwd = vim.fn.getcwd(), hidden = true })
 end, { desc = "Find files (cwd)" })
