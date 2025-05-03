@@ -53,7 +53,8 @@ fyd() {
 
   if [[ -n "$package" ]]; then
     # Confirm removal before proceeding
-    read -p "Are you sure you want to remove $package? [y/N] " confirm
+    echo "Are you sure you want to remove $package? [y/N]"
+    read confirm
     if [[ "$confirm" == [Yy] ]]; then
       yay -Rdd "$package" && notify-send "✔️ Package removed: $package"
     else
@@ -65,13 +66,14 @@ fyd() {
   fi
 }
 
-# Fuzzy execution
+# Fuzzy executables
 fex() {
   local executable
-  executable=$(compgen -c | fzf --height=90% \
+  # The timeout is to prevent gui help menus
+  executable=$(compgen -c | grep -v '^_' | fzf --height=90% \
     --reverse \
     --border \
-    --preview 'echo "Help for {}:"; {} --help' \
+    --preview 'echo "Help for {}:"; timeout 0.01s {} --help' \
     --preview-window=right:50%:wrap \
     --prompt="🔧 Select an executable to get help: " \
     --marker="👉" \
