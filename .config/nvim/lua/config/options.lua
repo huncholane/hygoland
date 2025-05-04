@@ -36,6 +36,24 @@ if vim.loop.os_uname().release:match("WSL") then
   }
 end
 
+-- wayland settings
+if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
+  vim.notify("Wayland detected")
+
+  vim.g.clipboard = {
+    name = "wl-clipboard",
+    copy = {
+      ["+"] = "wl-copy",
+      ["*"] = "wl-copy",
+    },
+    paste = {
+      ["+"] = "wl-paste --no-newline",
+      ["*"] = "wl-paste --no-newline",
+    },
+    cache_enabled = 1,
+  }
+end
+
 -- disable animations
 vim.g.snacks_animate = false
 
