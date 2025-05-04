@@ -1,3 +1,3 @@
 local utils = require("utils.formatting")
 
-utils.set_tabs(4)
+utils.set_tabs(3)

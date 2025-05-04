@@ -31,7 +31,7 @@ return {
       },
     },
     opts = {
-      lang = "golang",
+      lang = "python3",
     },
     config = function(_, opts)
       require("which-key").add({
