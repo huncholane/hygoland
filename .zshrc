@@ -42,6 +42,7 @@ SAVEHIST=10000
 setopt appendhistory
 
 # neovim takeover
+export EDITOR=nvim
 alias vim=nvim
 alias v=nvim
 alias nv=nvim
