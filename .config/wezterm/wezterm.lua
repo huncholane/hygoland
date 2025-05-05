@@ -4,11 +4,7 @@ local act = wezterm.action
 local mux = wezterm.mux
 local config = wezterm.config_builder()
 
--- basic config
--- config.default_domain = "WSL:Ubuntu"
-
 -- window config
--- config.font = wezterm.font("Hack Nerd Font")
 config.enable_wayland = false
 config.font_size = 10
 config.window_decorations = "RESIZE"
@@ -21,33 +17,20 @@ config.color_scheme = "Tokyo Night Storm"
 
 -- keymap
 config.keys = {
-	-- Unset keys for tmux
-	{ key = "h", mods = "CTRL|SHIFT", action = act.DisableDefaultAssignment },
-	{ key = "j", mods = "CTRL|SHIFT", action = act.DisableDefaultAssignment },
-	{ key = "k", mods = "CTRL|SHIFT", action = act.DisableDefaultAssignment },
-	{ key = "l", mods = "CTRL|SHIFT", action = act.DisableDefaultAssignment },
-	{ key = "h", mods = "CTRL|ALT", action = act.DisableDefaultAssignment },
-	{ key = "j", mods = "CTRL|ALT", action = act.DisableDefaultAssignment },
-	{ key = "k", mods = "CTRL|ALT", action = act.DisableDefaultAssignment },
-	{ key = "l", mods = "CTRL|ALT", action = act.DisableDefaultAssignment },
-
 	-- Vim like pane movement
-	-- { key = "h", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
-	-- { key = "j", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
-	-- { key = "k", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
-	-- { key = "l", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
+	{ key = "h", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Left") },
+	{ key = "j", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Down") },
+	{ key = "k", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Up") },
+	{ key = "l", mods = "CTRL|SHIFT", action = act.ActivatePaneDirection("Right") },
 
 	-- Vim like resize events
-	-- { key = "h", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Left", 3 }) },
-	-- { key = "j", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Down", 3 }) },
-	-- { key = "k", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Up", 3 }) },
-	-- { key = "l", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Right", 3 }) },
+	{ key = "h", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Left", 3 }) },
+	{ key = "j", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Down", 3 }) },
+	{ key = "k", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Up", 3 }) },
+	{ key = "l", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Right", 3 }) },
 
 	-- Exit pane
 	{ key = "e", mods = "CTRL|SHIFT", action = act.CloseCurrentPane({ confirm = false }) },
-
-	-- Close current tab
-	-- { key = "q", mods = "CTRL|ALT", action = act.CloseCurrentTab({ confirm = false }) },
 
 	-- window keys
 	{ key = "n", mods = "CTRL|ALT", action = utils.SpawnMaximizedCommandInNewWindow({}) },

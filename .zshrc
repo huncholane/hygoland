@@ -48,5 +48,5 @@ alias v=nvim
 alias nv=nvim
 alias vi=nvim
 
-# add go to path
+# add go bin to path
 export PATH=$PATH:$(go env GOPATH)/bin
