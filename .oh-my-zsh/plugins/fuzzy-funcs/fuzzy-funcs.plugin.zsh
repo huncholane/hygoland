@@ -89,3 +89,13 @@ fex() {
     notify-send "❌ No executable selected."
   fi
 }
+
+# Fuzzy Mic Test (ftm)
+ftm() {
+  local mic
+  mic=$(pactl list short sources | fzf --prompt="🎤 Select Mic: " --height=40% --reverse | awk '{print $2}')
+  [[ -z "$mic" ]] && echo "❌ Cancelled" && return
+
+  echo "🎧 Testing $mic... Press Ctrl+C to stop."
+  pw-cat --record --target "$mic" --rate 48000 --channels 1 --format s16 - | pw-play -
+}
