@@ -50,3 +50,6 @@ alias vi=nvim
 
 # add go bin to path
 export PATH=$PATH:$(go env GOPATH)/bin
+
+# prevent cargo build from destroying computer
+export CARGO_BUILD_JOBS=20
