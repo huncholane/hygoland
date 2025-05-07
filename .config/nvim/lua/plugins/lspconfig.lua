@@ -13,7 +13,8 @@ return {
               analysis = {},
             },
             python = {
-              pythonPath = "/home/huncho/anaconda3/bin/python",
+              -- Pick path automatically
+              -- pythonPath = "/home/huncho/miniforge3/bin/python",
             },
           },
         },

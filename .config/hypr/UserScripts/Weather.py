@@ -35,7 +35,7 @@ def get_location():
 latitude, longitude = get_location()
 
 # Open-Meteo API endpoint
-url = f"https://weather.com/en-PH/weather/today/l/{latitude},{longitude}"
+url = f"https://weather.com/en-PH/weather/today/l/{latitude},{longitude}?unit=f"
 
 # manual location_id
 # NOTE: if you want to add manually, make sure you disable def get_location above
