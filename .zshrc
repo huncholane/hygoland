@@ -82,3 +82,6 @@ else
 fi
 unset __mamba_setup
 # <<< mamba initialize <<<
+
+# simpler ipython alias
+alias py=ipython
