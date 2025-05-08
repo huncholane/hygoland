@@ -1,9 +1,11 @@
--- wipes all the keys for the given regex
-local function wipe_keys_for(regex)
-  for _, key in ipairs(vim.api.nvim_get_keymap("n")) do
-    if key.lhs:find(regex) then
-      vim.noptify("removing" .. key.lhs)
-      vim.api.nvim_del_keymap("n", key.lhs)
+-- wipes all the keys for the given startswith after leader
+local function wipe_leader_keys(startswith)
+  local m = vim.api.nvim_get_keymap("n")
+  local leader = vim.g.mapleader
+
+  for _, k in ipairs(m) do
+    if k.lhs:find("^" .. leader .. startswith) then
+      vim.api.nvim_del_keymap("n", k.lhs)
     end
   end
 end
@@ -31,12 +33,12 @@ return {
           end
 
           if has_leetcode then
-            -- wipe_keys_for("l")
-            vim.api.nvim_del_keymap("n", "<leader>l")
+            wipe_leader_keys("l")
             vim.api.nvim_set_keymap("n", "<leader>l", "", { desc = "LeetCode" })
             vim.api.nvim_set_keymap("n", "<leader>ls", "<cmd>Leet submit<cr>", { desc = "Submit" })
             vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>Leet test<cr>", { desc = "Test" })
             vim.api.nvim_set_keymap("n", "<Leader>ll", "<cmd>Leet list<cr>", { desc = "List" })
+            vim.api.nvim_set_keymap("n", "<leader>lc", "<cmd>Leet console<cr>", { desc = "Console" })
           end
         end,
       })
