@@ -91,4 +91,6 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 alias tm='tmux attach || tmux'
-alias src='source ~/.zshrc'
+alias src='clear && source ~/.zshrc'
+
+alias dcu='docker compose build && docker compose down --remove-orphans && docker compose up -d && docker compose logs -f'
