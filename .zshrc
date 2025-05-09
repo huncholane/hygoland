@@ -48,6 +48,9 @@ alias v=nvim
 alias nv=nvim
 alias vi=nvim
 
+# readonly vim -> ex: ps aux | vr
+alias vr="nvim -R"
+
 # add go bin to path
 export PATH=$PATH:$(go env GOPATH)/bin
 
