@@ -22,7 +22,7 @@
 "margin-right": 8,
 
 "modules-left": [
-	"group/audio",
+	"group/drawerless-audio",
 	"custom/separator#blank",
 	"custom/cava_mviz",
 	"custom/separator#blank",
@@ -47,9 +47,8 @@
 	"tray",
 	"network#speed",
 	"custom/separator#dot-line",
-	"group/mobo_drawer",
-	"custom/separator#line",  
+	"group/drawerless-mobo_drawer",
 	"custom/separator#dot-line", 
-	"group/status",
+	"group/drawerless-status",
 	],
 }
