@@ -67,3 +67,6 @@ end, { desc = "Telescope (cwd)" })
 vim.keymap.set("n", "<leader><space>", function()
   require("telescope.builtin").find_files({ cwd = vim.fn.getcwd(), hidden = true })
 end, { desc = "Find files (cwd)" })
+
+-- Close or open lsp popup
+vim.keymap.set({ "n" }, "<leader>cn", "<cmd>NoiceDismiss<cr>", { desc = "Dismiss Noice" })

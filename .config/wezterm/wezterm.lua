@@ -29,6 +29,9 @@ config.keys = {
 	{ key = "k", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Up", 3 }) },
 	{ key = "l", mods = "CTRL|SHIFT|ALT", action = act.AdjustPaneSize({ "Right", 3 }) },
 
+	-- make ctrl-enter mean something
+	{ key = "i", mods = "CTRL", action = wezterm.action.SendString("\x1ba") },
+
 	-- Exit pane
 	{ key = "e", mods = "CTRL|SHIFT", action = act.CloseCurrentPane({ confirm = false }) },
 
