@@ -39,6 +39,8 @@ return {
             vim.api.nvim_set_keymap("n", "<leader>lt", "<cmd>Leet test<cr>", { desc = "Test" })
             vim.api.nvim_set_keymap("n", "<Leader>ll", "<cmd>Leet list<cr>", { desc = "List" })
             vim.api.nvim_set_keymap("n", "<leader>lc", "<cmd>Leet console<cr>", { desc = "Console" })
+            vim.api.nvim_set_keymap("n", "<leader>ly", "<cmd>Leet yank<cr>", { desc = "Yank" })
+            vim.api.nvim_set_keymap("n", "<leader>lo", "<cmd>Leet open<cr>", { desc = "Open" })
           end
         end,
       })
