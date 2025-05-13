@@ -5,12 +5,8 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
-    image = {
-      enabled = true,
-      inline_images = true,
-    },
     bigfile = { enabled = true },
-    dashboard = { enabled = true },
+    dashboard = { enabled = false },
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },

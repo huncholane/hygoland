@@ -2,6 +2,7 @@
 
 If you use vim style coding in any editor, this will help you instantly
 convert to neovim.
+print(vim.inspect(require("null-ls.sources").get_available("markdown", "DIAGNOSTICS")))
 
 ## Prerequisites
 

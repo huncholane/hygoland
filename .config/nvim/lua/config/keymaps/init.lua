@@ -57,13 +57,3 @@ vim.keymap.set("n", "zk", function()
   vim.cmd("normal zx")
   vim.cmd("normal zM")
 end, { desc = "Forcefully fold comments" })
-
--- Main live grep on cwd instead of git root
-vim.keymap.set("n", "<leader>/", function()
-  require("telescope.builtin").live_grep({ cwd = vim.fn.getcwd() })
-end, { desc = "Telescope (cwd)" })
-
--- Main file telescope cwd instead of git root
-vim.keymap.set("n", "<leader><space>", function()
-  require("telescope.builtin").find_files({ cwd = vim.fn.getcwd(), hidden = true })
-end, { desc = "Find files (cwd)" })
