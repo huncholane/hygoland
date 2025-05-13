@@ -57,3 +57,8 @@ vim.keymap.set("n", "zk", function()
   vim.cmd("normal zx")
   vim.cmd("normal zM")
 end, { desc = "Forcefully fold comments" })
+
+-- Make sure leader space uses smart picker
+vim.keymap.set("n", "<leader><space>", function()
+  Snacks.picker.smart()
+end, { desc = "Smart Snacks Picker" })
