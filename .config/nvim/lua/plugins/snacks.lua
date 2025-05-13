@@ -6,7 +6,13 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    dashboard = { enabled = false },
+    image = { enabled = true },
+    dashboard = {
+      enabled = true,
+      keys = {
+        { icon = "", key = "z", desc = "LeetCode", action = ":Leet" },
+      },
+    },
     explorer = { enabled = true },
     indent = { enabled = true },
     input = { enabled = true },
@@ -27,7 +33,7 @@ return {
     {
       "<leader><space>",
       function()
-        Snacks.picker.smart({ cwd = cwd })
+        Snacks.picker.smart()
       end,
       desc = "Smart Find Files",
     },

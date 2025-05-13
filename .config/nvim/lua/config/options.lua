@@ -8,47 +8,19 @@ vim.g.ai_cmp = false
 -- disable swap files, not needed with autosession
 vim.opt.swapfile = false
 
--- wsl settings
----@diagnostic disable-next-line
-if vim.loop.os_uname().release:match("WSL") then
-  vim.notify("User is on wsl")
-
-  -- open files in windows
-  ---@diagnostic disable-next-line
-  vim.ui.open = function(url)
-    local cmd = { "wslview", url }
-    vim.fn.jobstart(cmd, { detach = true })
-  end
-
-  -- Fix the clipboard
-  local paste = "powershell.exe -NoProfile -Command Get-Clipboard"
-  paste = 'sh -c "' .. paste .. '"'
-  vim.g.clipboard = {
-    name = "clip-wsl",
-    copy = {
-      ["+"] = "/mnt/c/tools/win32yank.exe -i --crlf",
-      ["*"] = "/mnt/c/tools/win32yank.exe -i --crlf",
-    },
-    paste = {
-      ["+"] = "/mnt/c/tools/win32yank.exe -o --lf",
-      ["*"] = "/mnt/c/tools/win32yank.exe -o --lf",
-    },
-  }
-end
-
 -- wayland settings
 if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
-  vim.notify("Wayland detected")
+  -- vim.notify("Wayland detected")
 
   vim.g.clipboard = {
-    name = "wl-clipboard",
+    name = "xclip",
     copy = {
-      ["+"] = "wl-copy",
-      ["*"] = "wl-copy",
+      ["+"] = "xclip -selection clipboard",
+      ["*"] = "xclip -selection primary",
     },
     paste = {
-      ["+"] = "wl-paste --no-newline",
-      ["*"] = "wl-paste --no-newline",
+      ["+"] = "xclip -selection clipboard -o",
+      ["*"] = "xclip -selection primary -o",
     },
     cache_enabled = 1,
   }
