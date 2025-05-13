@@ -1,6 +1,8 @@
 # Hygoland
 
-🌀 Personal dotfiles for a Hyprland-based setup. Everything is rooted in `~` and tracked using a `.gitignore` whitelist.
+Personal dotfiles for a Hyprland-based setup. Everything is rooted in `~` and tracked using a `.gitignore` whitelist.
+
+##
 
 ## ✨ Features
 
