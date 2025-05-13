@@ -97,3 +97,6 @@ alias tm='tmux attach || tmux'
 alias src='clear && source ~/.zshrc'
 
 alias dcu='docker compose build && docker compose down --remove-orphans && docker compose up -d && docker compose logs -f'
+
+# Add gem to environment
+export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
