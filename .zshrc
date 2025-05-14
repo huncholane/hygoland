@@ -100,3 +100,6 @@ alias dcu='docker compose build && docker compose down --remove-orphans && docke
 
 # Add gem to environment
 export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
+
+# Add mason to environment path
+export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"

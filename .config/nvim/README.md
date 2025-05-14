@@ -2,11 +2,11 @@
 
 If you use vim style coding in any editor, this will help you instantly
 convert to neovim.
-print(vim.inspect(require("null-ls.sources").get_available("markdown", "DIAGNOSTICS")))
 
 ## Prerequisites
 
 - If you are using a mac, you need to use iterm2. The default terminal doesn't support true color, so all the colorschemes will look terrible and unreadable.
+- Kitty terminal works best with neovim.
 - Install a [NerdFont Font](https://www.nerdfonts.com/font-downloads)
 - [FD-Find](https://github.com/sharkdp/fd)
 
@@ -14,7 +14,7 @@ print(vim.inspect(require("null-ls.sources").get_available("markdown", "DIAGNOST
 sudo apt install fd-find
 ```
 
-- [repgrep](https://github.com/BurntSushi/ripgrep)
+- [ripgrep](https://github.com/BurntSushi/ripgrep)
 
 ```bash
 sudo apt install ripgrep

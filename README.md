@@ -4,7 +4,7 @@ Personal dotfiles for a Hyprland-based setup. Everything is rooted in `~` and tr
 
 ## 🚧 PSA
 
-Installing via the setup section will replace waybar, nvim, hyprland, tmux, and wezterm configs.
+Installing via the setup section will replace waybar, nvim, hyprland, tmux, kitty, and wezterm configs.
 
 ## ✨ Features
 
