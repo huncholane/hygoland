@@ -62,3 +62,8 @@ end, { desc = "Forcefully fold comments" })
 vim.keymap.set("n", "<leader><space>", function()
   Snacks.picker.smart()
 end, { desc = "Smart Snacks Picker" })
+
+-- Make sure leader / user picker grep
+vim.keymap.set("n", "<leader>/", function()
+  Snacks.picker.grep()
+end, { desc = "Snacks Grep" })
