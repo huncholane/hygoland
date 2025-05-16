@@ -33,15 +33,5 @@ return {
   },
   {
     "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local nls = require("null-ls")
-      opts.sources = opts.sources or {}
-      vim.list_extend(opts.sources, {
-        -- nls.builtins.diagnostics.mypy.with({
-        --   command = "mypy",
-        --   extra_args = { "--config-file", vim.fn.getcwd() .. "/mypy.ini" },
-        -- }),
-      })
-    end,
   },
 }
