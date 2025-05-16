@@ -106,3 +106,11 @@ export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
 
 # Copy last command
 alias copylast='fc -ln -1 | wl-copy'
+
+# Source .env file
+dot() {
+  set -a
+  local file="${1:-.env}"
+  [ -f "$file" ] && source "$file"
+  set +a
+}
