@@ -103,3 +103,6 @@ export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
 
 # Add mason to environment path
 export PATH="$PATH:$HOME/.local/share/nvim/mason/bin"
+
+# Copy last command
+alias copylast='fc -ln -1 | wl-copy'
