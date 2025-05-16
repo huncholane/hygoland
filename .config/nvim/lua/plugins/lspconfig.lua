@@ -10,25 +10,18 @@ return {
           enabled = true,
           settings = {
             basedpyright = {
-              analysis = {},
+              analysis = {
+                typeCheckingMode = "strict",
+              },
             },
-            python = {
-              -- Pick path automatically
-              -- pythonPath = "/home/huncho/miniforge3/bin/python",
-            },
+            python = {},
           },
         },
         pyright = {
           enabled = false,
           settings = {
             python = {
-              pythonPath = "/home/huncho/anaconda3/bin/python",
-              analysis = {
-                autoSearchPaths = true,
-                useLibraryCodeForTypes = true,
-                typeCheckingMode = "basic",
-                diagnosticMode = "workspace",
-              },
+              analysis = {},
             },
           },
         },
