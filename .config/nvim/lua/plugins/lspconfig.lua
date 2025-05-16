@@ -6,9 +6,6 @@ return {
         underline = true,
       },
       servers = {
-        swift_mesonls = {
-          enabled = true,
-        },
         basedpyright = {
           enabled = true,
           settings = {
