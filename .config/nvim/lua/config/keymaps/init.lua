@@ -67,3 +67,9 @@ end, { desc = "Smart Snacks Picker" })
 vim.keymap.set("n", "<leader>/", function()
   Snacks.picker.grep()
 end, { desc = "Snacks Grep" })
+
+-- map window controls i insert mode
+vim.keymap.set("i", "<C-J>", "<Esc><C-W>j", { desc = "Go down window" })
+vim.keymap.set("i", "<C-H>", "<Esc><C-W>h", { desc = "Go left window" })
+vim.keymap.set("i", "<C-K>", "<Esc><C-W>k", { desc = "Go up window" })
+vim.keymap.set("i", "<C-L>", "<Esc><C-W>l", { desc = "Go right window" })
