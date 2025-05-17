@@ -122,7 +122,7 @@ twatch() {
 
 # Watch results of command based on input files given through stdin
 vwatch() {
-  cat - | entr -r sh -c "tmux popup -C; tmux popup -w 95% -h 95% -d \"$(pwd)\" -E \"$1 2>&1 | nvim -R -M\""
+  cat - | entr -r sh -c "tmux popup -C; tmux popup -B -w 95% -h 95% -d \"$(pwd)\" -E \"$1 2>&1 | nvim -R -M\""
 }
 
 # Watch results of command and pipe into jqp
