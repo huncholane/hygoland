@@ -17,3 +17,4 @@ if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
     cache_enabled = 1,
   }
 end
+vim.o.clipboard = "unnamedplus"
