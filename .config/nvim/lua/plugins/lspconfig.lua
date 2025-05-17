@@ -11,8 +11,8 @@ return {
           settings = {
             basedpyright = {
               analysis = {
-                typeCheckingMode = "strict",
-                -- diagnosticMode = "workspace",
+                typeCheckingMode = "basic",
+                diagnosticMode = "workspace",
               },
             },
             python = {},
