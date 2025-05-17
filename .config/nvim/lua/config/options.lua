@@ -20,7 +20,7 @@ if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
     },
     paste = {
       ["+"] = "wl-paste --no-newline",
-      ["*"] = "wl-paste --primary --no-newline",
+      ["*"] = "xclip -selection primary -o",
     },
     cache_enabled = 1,
   }
@@ -32,9 +32,6 @@ vim.g.snacks_animate = false
 -- set normal numbers
 vim.cmd("set norelativenumber")
 
--- fold basic comments
--- fold basic comments
--- fold basic comments
 -- fold basic comments
 vim.opt.foldmethod = "expr"
 vim.opt.foldopen = ""
