@@ -1,4 +1,5 @@
 vim.keymap.set("n", "q", "<cmd>qa!<CR>", { noremap = true, silent = true })
+vim.keymap.set("v", "q", "<cmd>qa!<CR>", { noremap = true, silent = true })
 vim.o.number = true
 -- wayland settings
 if vim.fn.getenv("WAYLAND_DISPLAY") ~= vim.NIL then
