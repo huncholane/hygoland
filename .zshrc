@@ -117,16 +117,16 @@ dot() {
 
 # Make a tmux popup that reloads when the input files from stdin change
 twatch() {
-  cat - | entr -r sh -c "tmux popup -C; tmux popup -w 95% -h 95% \"$1\""
+  cat - | entr -r sh -c "tmux popup -C; tmux popup -w 95% -h 95% -d $(pwd) \"$1 2>&1\""
 }
 
 # Watch results of command based on input files given through stdin
 vwatch() {
-  cat - | entr -r sh -c "tmux popup -C; tmux popup -w 95% -h 95% -E \"$1 2>&1 | nvim -R -M\""
+  cat - | entr -r sh -c "tmux popup -C; tmux popup -w 95% -h 95% -d \"$(pwd)\" -E \"$1 2>&1 | nvim -R -M\""
 }
 
 # Watch results of command and pipe into jqp
 jwatch() {
-  cat - | entr -r sh -c "tmux popup -C; tmux popup -w 95% -h 95% -EE \"$1 2>&1 | jqp\""
+  cat - | entr -r sh -c "tmux popup -C; tmux popup -w 95% -h 95% -d $(pwd) -EE \"$1 2>&1 | jqp\""
 }
 
