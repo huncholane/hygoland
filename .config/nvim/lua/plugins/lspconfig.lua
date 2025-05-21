@@ -13,6 +13,7 @@ return {
               analysis = {
                 typeCheckingMode = "basic",
                 diagnosticMode = "workspace",
+                exclude = { "**/__pycache__", "**/node_modules", "**/venv", "**/.mypycache" },
               },
             },
             python = {},
