@@ -33,9 +33,9 @@ vim.g.snacks_animate = false
 vim.cmd("set norelativenumber")
 
 -- fold basic comments
-vim.opt.foldmethod = "expr"
-vim.opt.foldopen = ""
-vim.opt.foldexpr = "v:lua.CommentFoldExpr()"
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldopen = ""
+-- vim.opt.foldexpr = "v:lua.CommentFoldExpr()"
 
 -- add suggested options for autosession
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
