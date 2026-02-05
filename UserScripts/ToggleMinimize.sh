@@ -5,7 +5,7 @@ class=$(echo "$details" | grep -oP '(?<=class: ).*')
 
 # Launch hubstaff and exit if not open
 if [ -z "$details" ]; then
-  /home/huncho/Hubstaff/HubstaffClient.bin.x86_64 &>/dev/null &
+  $2 &>/dev/null &
   exit 0
 fi
 
