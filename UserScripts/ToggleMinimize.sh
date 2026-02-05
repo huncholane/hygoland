@@ -1,9 +1,11 @@
 #!/bin/bash
 
-details=$(hyprctl clients | grep -i "$1" -B 2 -A 15)
-class=$(echo "$details" | grep -oP '(?<=class: ).*')
+details=$(hyprctl clients -j | jq -r '.[] | select(.class | test("'"$1"'"; "i"))')
+class=$(echo "$details" | jq -r '.class')
+workspace=$(echo "$details" | jq -r '.workspace.name')
+echo "$class $workspace"
 
-# Launch hubstaff and exit if not open
+# Launch app and exit if class is not found
 if [ -z "$details" ]; then
   $2 &>/dev/null &
   exit 0
@@ -12,7 +14,7 @@ fi
 cur_workspace=$(hyprctl activeworkspace -j | jq '.id')
 
 # Toggle minimized
-if echo "$details" | grep -q "special:minimized"; then
+if [ "$workspace" = "special:minimized" ]; then
   # Bring to current workspace
   echo "moving to workspace: $cur_workspace"
   hyprctl dispatch movetoworkspace "$cur_workspace", "class:$class"
