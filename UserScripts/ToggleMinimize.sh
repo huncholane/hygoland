@@ -7,19 +7,19 @@ echo "$class $workspace"
 
 # Launch app and exit if class is not found
 if [ -z "$details" ]; then
-  $2 &>/dev/null &
-  exit 0
+    $2 &>/dev/null &
+    exit 0
 fi
 
 cur_workspace=$(hyprctl activeworkspace -j | jq '.id')
 
 # Toggle minimized
 if [ "$workspace" = "special:minimized" ]; then
-  # Bring to current workspace
-  echo "moving to workspace: $cur_workspace"
-  hyprctl dispatch movetoworkspace "$cur_workspace", "class:$class"
+    # Bring to current workspace
+    echo "moving to workspace: $cur_workspace"
+    hyprctl dispatch movetoworkspacesilent "$cur_workspace", "class:$class"
 else
-  # Move to special:minimized
-  echo "moving to minimized workspace"
-  hyprctl dispatch movetoworkspacesilent special:minimized, "class:$class"
+    # Move to special:minimized
+    echo "moving to minimized workspace"
+    hyprctl dispatch movetoworkspacesilent special:minimized, "class:$class"
 fi
