@@ -1,0 +1,79 @@
+#!/usr/bin/env bash
+# Push-to-talk dictation: `start` begins recording, `stop` ends + transcribes + pastes.
+
+set -euo pipefail
+
+CACHE=~/.cache/whisper-dictate
+PID_FILE="$CACHE/recorder.pid"
+WAV_FILE="$CACHE/audio.wav"
+TARGET_FILE="$CACHE/target.json"
+PYTHON=~/.venv/bin/python
+MODEL="${WHISPER_MODEL:-small.en}"
+DEVICE="${WHISPER_DEVICE:-cuda}"
+
+mkdir -p "$CACHE"
+
+CUDA_LIB_PATHS=""
+for sub in nvidia/cublas/lib nvidia/cudnn/lib; do
+  for dir in ~/.venv/lib/python*/site-packages/$sub; do
+    [[ -d "$dir" ]] && CUDA_LIB_PATHS+="$dir:"
+  done
+done
+export LD_LIBRARY_PATH="${CUDA_LIB_PATHS}${LD_LIBRARY_PATH:-}"
+
+notify() {
+  command -v notify-send >/dev/null && notify-send -t 1500 "Whisper" "$1" || true
+}
+
+start() {
+  if [[ -f "$PID_FILE" ]] && kill -0 "$(cat "$PID_FILE")" 2>/dev/null; then
+    kill -INT "$(cat "$PID_FILE")" 2>/dev/null || true
+    rm -f "$PID_FILE"
+  fi
+  rm -f "$WAV_FILE"
+  hyprctl activewindow -j > "$TARGET_FILE" 2>/dev/null || true
+  notify "Recording..."
+  "$PYTHON" "$HOME/.dotfiles/hypr/UserScripts/whisper/whisper-record.py" "$WAV_FILE" </dev/null >/dev/null 2>&1 &
+  echo "$!" > "$PID_FILE"
+}
+
+stop() {
+  [[ -f "$PID_FILE" ]] || exit 0
+  PID="$(cat "$PID_FILE")"
+  rm -f "$PID_FILE"
+  notify "Transcribing..."
+  kill -INT "$PID" 2>/dev/null || true
+  for _ in {1..30}; do
+    kill -0 "$PID" 2>/dev/null || break
+    sleep 0.1
+  done
+  if [[ ! -s "$WAV_FILE" ]]; then
+    notify "No audio recorded"
+    exit 0
+  fi
+  TEXT="$("$PYTHON" "$HOME/.dotfiles/hypr/UserScripts/whisper/whisper-transcribe.py" "$WAV_FILE" "$MODEL" "$DEVICE" 2>/tmp/whisper-error.log || true)"
+  if [[ -z "$TEXT" ]]; then
+    notify "No speech detected (see /tmp/whisper-error.log)"
+    exit 0
+  fi
+  ADDR="$(grep -oP '"address":\s*"\K[^"]+' "$TARGET_FILE" 2>/dev/null || true)"
+  CLASS="$(grep -oP '"class":\s*"\K[^"]+' "$TARGET_FILE" 2>/dev/null || true)"
+  if [[ -n "$ADDR" ]]; then
+    hyprctl dispatch focuswindow "address:$ADDR" >/dev/null 2>&1 || true
+    sleep 0.05
+  fi
+  printf "%s" "$TEXT" | wl-copy
+  case "$CLASS" in
+    foot|kitty|Alacritty|alacritty|WezTerm|org.wezfurlong.wezterm|com.mitchellh.ghostty|ghostty|XTerm|st-*)
+      wtype -M ctrl -M shift -k v -m shift -m ctrl ;;
+    *)
+      wtype -M ctrl -k v -m ctrl ;;
+  esac
+  notify "Pasted ${#TEXT} chars"
+}
+
+case "${1:-}" in
+  start) start ;;
+  stop) stop ;;
+  *) echo "usage: $0 {start|stop}" >&2; exit 1 ;;
+esac
